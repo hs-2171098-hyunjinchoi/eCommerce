@@ -33,7 +33,7 @@
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
 			</props>
 		</property>
 	</bean>
@@ -43,5 +43,6 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
+<!--	@Transactional 어노테이션 사용 가능-->
 	<tx:annotation-driven />
 </beans>

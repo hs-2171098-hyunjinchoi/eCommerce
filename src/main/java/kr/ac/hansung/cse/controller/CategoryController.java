@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 
-@RestController
+@RestController // @Controller + @ResponseBody
 @RequestMapping(path = "/api/categories")
 public class CategoryController {
 
@@ -30,9 +30,11 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Category> retrieveCategory(@PathVariable Long id) {
-
-
-
+        Category category = categoryService.getCategoryById(id);
+        if(category == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
     @PostMapping
